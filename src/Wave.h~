@@ -97,7 +97,7 @@ private:
 	int ReadWaveFileMono(FILE * fp, std::vector<short>& vecData);
 
 	//Load the Stereo WaveData to the CWaveBuffer which is a short int buffer
-	int ReadWaveFileStereo(FILE * fp, std::vector<short>& vecData, bool bStereoAsMono);
+	int ReadWaveFileStereo(FILE * fp, std::vector<short>& vecData, bStereoAsMono);
 
 	//Read header information from wave file
 	bool ReadWaveHeader(FILE *fp);

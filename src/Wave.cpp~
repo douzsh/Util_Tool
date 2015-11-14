@@ -22,7 +22,6 @@ Wave::~Wave()
 bool Wave::ReadWaveHeader(FILE* fp)
 {
     size_t result;
-    int fseekRtn = -1;
 	//open wave file
 	if ( !fp )
 	{
