@@ -5,3 +5,4 @@ rm -rf ./cmake_install.cmake
 rm -rf ./CMakeFiles
 rm -rf ./lib
 rm -rf ./bin
+rm -rf Makefile

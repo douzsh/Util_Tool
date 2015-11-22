@@ -26,6 +26,7 @@ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 set(SRC_LIST
     ./src/Wave.cpp
+    ./src/Demuxing.cpp
 )
 
-add_library(Util_Tool STATIC ${SRC_LIST})
+add_library(Util_Tool SHARED ${SRC_LIST})
