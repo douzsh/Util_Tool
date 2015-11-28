@@ -16,7 +16,6 @@ Wave::Wave()
 
 Wave::~Wave()
 {
-	// TODO Auto-generated destructor stub
 }
 
 bool Wave::ReadWaveHeader(FILE* fp)
@@ -33,9 +32,9 @@ bool Wave::ReadWaveHeader(FILE* fp)
 	bool datachunk = false;
 	while ( (!datachunk) ) 
 	{
-		fread(&chunkid, 4, 1, fp);
+		result = fread(&chunkid, 4, 1, fp);
 		// if read the end of the file, return.
-		if (feof(fp))
+		if (feof(fp) || result<0)
 		{
 			break;
 		}
@@ -119,7 +118,10 @@ int Wave::ReadWaveFileMono(FILE* fp, std::vector<short>& vecData)
 	for (int i = 0; i < datalen; i++)
 	{
 		result = fread(&wavedata, sizeof(short), 1, fp);
-		vecData.push_back(wavedata);
+		if(result>0)
+		{
+			vecData.push_back(wavedata);
+		}
 	}
 
 	return 0;

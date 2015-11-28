@@ -6,11 +6,8 @@
 
 #ifndef DEMUXING_H_
 #define DEMUXING_H_
-//#define __STDC_FORMAT_MACROS
-//#define __STDC_CONSTANT_MACROS
 extern "C"
 {
-//#define snprintf _snprintf
 #include <libavformat/avformat.h>
 #include <libavfilter/avfilter.h>
 }
@@ -23,7 +20,7 @@ extern "C"
 #define AV_GET_FRAME_DEFAULTS avcodec_get_frame_defaults
 #endif
 
-#define USEAUDIO
+//#define USEAUDIO
 //#define USEVIDEO
 
 const int SAMPLERATE=48000;
@@ -45,16 +42,12 @@ private:
 
 	int open_input_file(const char *filename);
 
-#ifdef USEVIDEO
 	int init_video_stream( const char *filters_descr, AVPixelFormat fmt, AVFilterGraph **video_filter_graph, 
 		AVFilterContext **video_buffersrc_ctx, AVFilterContext **video_buffersink_ctx);
 	int decode_video_packet(int *got_frame,char** pData,int& iDataLen);
-#endif
 
-#ifdef USEAUDIO
 	int decode_audio_packet(int *got_frame,char** pData,int& iDataLen);
 	int init_audio_stream(const char *filters_descr);
-#endif
 
 private:
 	AVFormatContext *m_fmt_ctx;
